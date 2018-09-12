@@ -1,0 +1,10 @@
+C:\Users\Łukasz\source\repos\wykresy\wykresy\bin\Debug\wykresy.exe.config
+C:\Users\Łukasz\source\repos\wykresy\wykresy\bin\Debug\wykresy.exe
+C:\Users\Łukasz\source\repos\wykresy\wykresy\bin\Debug\wykresy.pdb
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.csprojAssemblyReference.cache
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.Form1.resources
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.Properties.Resources.resources
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.csproj.GenerateResource.cache
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.exe
+C:\Users\Łukasz\source\repos\wykresy\wykresy\obj\Debug\wykresy.pdb
