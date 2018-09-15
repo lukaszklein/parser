@@ -41,6 +41,8 @@
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Load = new System.Windows.Forms.Button();
+            this.createSubset = new System.Windows.Forms.Button();
+            this.gnucompile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,11 +119,33 @@
             this.Load.UseVisualStyleBackColor = true;
             this.Load.Click += new System.EventHandler(this.load_Click);
             // 
+            // createSubset
+            // 
+            this.createSubset.Location = new System.Drawing.Point(1017, 62);
+            this.createSubset.Name = "createSubset";
+            this.createSubset.Size = new System.Drawing.Size(75, 23);
+            this.createSubset.TabIndex = 2;
+            this.createSubset.Text = "plik";
+            this.createSubset.UseVisualStyleBackColor = true;
+            this.createSubset.Click += new System.EventHandler(this.createSubset_Click);
+            // 
+            // gnucompile
+            // 
+            this.gnucompile.Location = new System.Drawing.Point(1017, 116);
+            this.gnucompile.Name = "gnucompile";
+            this.gnucompile.Size = new System.Drawing.Size(75, 23);
+            this.gnucompile.TabIndex = 3;
+            this.gnucompile.Text = "do gnu";
+            this.gnucompile.UseVisualStyleBackColor = true;
+            this.gnucompile.Click += new System.EventHandler(this.gnucompile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 653);
+            this.Controls.Add(this.gnucompile);
+            this.Controls.Add(this.createSubset);
             this.Controls.Add(this.Load);
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
@@ -135,6 +159,8 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button Load;
+        private System.Windows.Forms.Button createSubset;
+        private System.Windows.Forms.Button gnucompile;
     }
 }
 
