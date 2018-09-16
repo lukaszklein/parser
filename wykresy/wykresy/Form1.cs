@@ -503,10 +503,12 @@ namespace wykresy
 
                 if (Regex.IsMatch(path, "Avg"))
                 {
-                    CreateFile("Avg" + distnumValue.ToString());
-
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Avg" + distnumValue.ToString() + "Lvl" + i.ToString();
+                        CreateFile(name);
+
+                    
                         for (int j = 3; j <= 15; j = j + 2)
                         {
                             msetofile = 0;
@@ -534,16 +536,18 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Avg" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
                 else if (Regex.IsMatch(path, "Median"))
                 {
-                    CreateFile("Median" + distnumValue.ToString());
-
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Median" + distnumValue.ToString() + "Lvl" + i.ToString();
+                        CreateFile(name);
+
+                    
                         for (int j = 3; j <= 15; j = j + 2)
                         {
                             msetofile = 0;
@@ -571,16 +575,18 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Median" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
                 else if (Regex.IsMatch(path, "Kuwahara"))
                 {
-                    CreateFile("Kuwahara" + distnumValue.ToString());
-
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Kuwahara" + distnumValue.ToString() + "Lvl" + i.ToString();
+                        CreateFile(name);
+
+                    
                         for (int j = 3; j <= 15; j = j + 2)
                         {
                             msetofile = 0;
@@ -608,7 +614,7 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Kuwahara" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
@@ -618,9 +624,11 @@ namespace wykresy
                     string sigma = Regex.Replace(whatsigma.Value, "[a-zA-Z :.]", "");
                     double sigmavalue;
                     Double.TryParse(sigma, out sigmavalue);
-                    CreateFile("Gauss" + distnumValue.ToString() + " Sigma" + sigmavalue.ToString());
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Gauss" + distnumValue.ToString() + "Lvl" + i.ToString() + " Sigma" + sigmavalue.ToString();
+                        CreateFile(name);
+                    
                         for (int j = 3; j <= 15; j = j + 2)
                         {
                             msetofile = 0;
@@ -648,7 +656,7 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Gauss" + distnumValue.ToString() + " Sigma" + sigmavalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
@@ -658,9 +666,11 @@ namespace wykresy
                     string weight = Regex.Replace(whatweight.Value, "[a-zA-Z :.]", "");
                     double weightvalue;
                     Double.TryParse(weight, out weightvalue);
-                    CreateFile("Unsharp" + distnumValue.ToString() + " Weight" + weightvalue.ToString());
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Unsharp" + distnumValue.ToString() + "Lvl" + i.ToString() + " Weight" + weightvalue.ToString();
+                        CreateFile(name);
+                    
                         for (int j = 3; j <= 15; j = j + 2)
                         {
                             msetofile = 0;
@@ -688,7 +698,7 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Unsharp" + distnumValue.ToString() + " Weight" + weightvalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
@@ -698,9 +708,11 @@ namespace wykresy
                     string color = Regex.Replace(whatcolor.Value, "[a-zA-Z :.]", "");
                     double colorvalue;
                     Double.TryParse(color, out colorvalue);
-                    CreateFile("Bilateral" + distnumValue.ToString() + " Color" + colorvalue.ToString());
                     for (int i = 1; i <= 5; i = i + 4)
                     {
+                        string name = "Bilateral" + distnumValue.ToString() + "Lvl" + i.ToString() + " Color" + colorvalue.ToString();
+                        CreateFile(name);
+                    
                         for (int j = 2; j <= 62; j = j + 10)
                         {
                             msetofile = 0;
@@ -728,7 +740,7 @@ namespace wykresy
                             string newmedtofile = medtofile.ToString().Replace(',', '.');
                             string newmartofile = martofile.ToString().Replace(',', '.');
                             string newtimetofile = timetofile.ToString().Replace(',', '.');
-                            AddToFile("Bilateral" + distnumValue.ToString() + " Color" + colorvalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                            AddToFile(name, j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
