@@ -337,8 +337,7 @@ namespace wykresy
 
         private void createSubset_Click(object sender, EventArgs e)
         {
-            var lines = File.ReadLines("C://Users//Łukasz//Desktop//Sem 10//magisterka//ocena.txt");
-            
+            var lines = File.ReadLines("C://Users//Łukasz//Desktop//Sem 10//magisterka//ocena.txt");            
 
             for (int distortion = 1; distortion <= 23; distortion++)
             {
@@ -432,7 +431,18 @@ namespace wykresy
             text.Close();
         }
 
-        void AddToFile(string name, int size, double mse, double msd, double med, double mar, double time)
+        void CreateFile2(string name)
+        {
+            if (!File.Exists("C://Users//Łukasz//Desktop//Sem 10//magisterka//przetworzne oceny//" + name + ".txt"))
+            {
+                File.Create(@"C:\Users\Łukasz\Desktop\Sem 10\magisterka\przetworzone oceny\" + name + ".txt").Close();
+            }
+            TextWriter text = new StreamWriter(@"C:\Users\Łukasz\Desktop\Sem 10\magisterka\przetworzone oceny\" + name + ".txt", true);
+            text.Write("#" + name + "\r\n#First set dist level = 1\r\n#Second set dist level = 5\r\n#Mask_size MSE MSE MED MAR TIME\r\n");
+            text.Close();
+        }
+
+        void AddToFile(string name, int size, string mse, string msd, string med, string mar, string time)
         {
             TextWriter text = new StreamWriter(@"C:\Users\Łukasz\Desktop\Sem 10\magisterka\przetworzone oceny\" + name + ".txt", true);
             text.Write(size.ToString() + " " + mse.ToString() + " " + msd.ToString() + " " + med.ToString() + " " + mar.ToString() + " " + time.ToString() + "\r\n");
@@ -492,10 +502,10 @@ namespace wykresy
                 Double.TryParse(distnum, out distnumValue);
 
                 if (Regex.IsMatch(path, "Avg"))
-                {                   
+                {
                     CreateFile("Avg" + distnumValue.ToString());
 
-                    for (int i = 1; i <= 5; i=i+4)
+                    for (int i = 1; i <= 5; i = i + 4)
                     {
                         for (int j = 3; j <= 15; j = j + 2)
                         {
@@ -518,7 +528,207 @@ namespace wykresy
                             medtofile = medtofile / linesdetected;
                             martofile = martofile / linesdetected;
                             timetofile = timetofile / linesdetected;
-                            AddToFile("Avg" + distnumValue.ToString(), j, msetofile, msdtofile, medtofile, martofile, timetofile);
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Avg" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                        }
+                    }
+                }
+                else if (Regex.IsMatch(path, "Median"))
+                {
+                    CreateFile("Median" + distnumValue.ToString());
+
+                    for (int i = 1; i <= 5; i = i + 4)
+                    {
+                        for (int j = 3; j <= 15; j = j + 2)
+                        {
+                            msetofile = 0;
+                            msdtofile = 0;
+                            medtofile = 0;
+                            martofile = 0;
+                            timetofile = 0;
+                            linesdetected = 0;
+
+                            foreach (var line in lines)
+                            {
+                                if (Regex.IsMatch(line, patternDataMaskSize + j.ToString()) && Regex.IsMatch(line, "_" + i.ToString()))
+                                {
+                                    Increment(line);
+                                }
+                            }
+                            msetofile = msetofile / linesdetected;
+                            msdtofile = msdtofile / linesdetected;
+                            medtofile = medtofile / linesdetected;
+                            martofile = martofile / linesdetected;
+                            timetofile = timetofile / linesdetected;
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Median" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                        }
+                    }
+                }
+                else if (Regex.IsMatch(path, "Kuwahara"))
+                {
+                    CreateFile("Kuwahara" + distnumValue.ToString());
+
+                    for (int i = 1; i <= 5; i = i + 4)
+                    {
+                        for (int j = 3; j <= 15; j = j + 2)
+                        {
+                            msetofile = 0;
+                            msdtofile = 0;
+                            medtofile = 0;
+                            martofile = 0;
+                            timetofile = 0;
+                            linesdetected = 0;
+
+                            foreach (var line in lines)
+                            {
+                                if (Regex.IsMatch(line, patternDataMaskSize + j.ToString()) && Regex.IsMatch(line, "_" + i.ToString()))
+                                {
+                                    Increment(line);
+                                }
+                            }
+                            msetofile = msetofile / linesdetected;
+                            msdtofile = msdtofile / linesdetected;
+                            medtofile = medtofile / linesdetected;
+                            martofile = martofile / linesdetected;
+                            timetofile = timetofile / linesdetected;
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Kuwahara" + distnumValue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                        }
+                    }
+                }
+                else if (Regex.IsMatch(path, "Gauss"))
+                {
+                    Match whatsigma = Regex.Match(path, " [0-9]*.txt");
+                    string sigma = Regex.Replace(whatsigma.Value, "[a-zA-Z :.]", "");
+                    double sigmavalue;
+                    Double.TryParse(sigma, out sigmavalue);
+                    CreateFile("Gauss" + distnumValue.ToString() + " Sigma" + sigmavalue.ToString());
+                    for (int i = 1; i <= 5; i = i + 4)
+                    {
+                        for (int j = 3; j <= 15; j = j + 2)
+                        {
+                            msetofile = 0;
+                            msdtofile = 0;
+                            medtofile = 0;
+                            martofile = 0;
+                            timetofile = 0;
+                            linesdetected = 0;
+
+                            foreach (var line in lines)
+                            {
+                                if (Regex.IsMatch(line, patternDataMaskSize + j.ToString()) && Regex.IsMatch(line, "_" + i.ToString()))
+                                {
+                                    Increment(line);
+                                }
+                            }
+                            msetofile = msetofile / linesdetected;
+                            msdtofile = msdtofile / linesdetected;
+                            medtofile = medtofile / linesdetected;
+                            martofile = martofile / linesdetected;
+                            timetofile = timetofile / linesdetected;
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Gauss" + distnumValue.ToString() + " Sigma" + sigmavalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                        }
+                    }
+                }
+                else if (Regex.IsMatch(path, "Unsharp"))
+                {
+                    Match whatweight = Regex.Match(path, " [0-9,]*.txt");
+                    string weight = Regex.Replace(whatweight.Value, "[a-zA-Z :.]", "");
+                    double weightvalue;
+                    Double.TryParse(weight, out weightvalue);
+                    CreateFile("Unsharp" + distnumValue.ToString() + " Weight" + weightvalue.ToString());
+                    for (int i = 1; i <= 5; i = i + 4)
+                    {
+                        for (int j = 3; j <= 15; j = j + 2)
+                        {
+                            msetofile = 0;
+                            msdtofile = 0;
+                            medtofile = 0;
+                            martofile = 0;
+                            timetofile = 0;
+                            linesdetected = 0;
+
+                            foreach (var line in lines)
+                            {
+                                if (Regex.IsMatch(line, patternDataMaskSize + j.ToString()) && Regex.IsMatch(line, "_" + i.ToString()))
+                                {
+                                    Increment(line);
+                                }
+                            }
+                            msetofile = msetofile / linesdetected;
+                            msdtofile = msdtofile / linesdetected;
+                            medtofile = medtofile / linesdetected;
+                            martofile = martofile / linesdetected;
+                            timetofile = timetofile / linesdetected;
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Unsharp" + distnumValue.ToString() + " Weight" + weightvalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
+                        }
+                    }
+                }
+                else if (Regex.IsMatch(path, "Bilateral"))
+                {
+                    Match whatcolor = Regex.Match(path, " [0-9]*.txt");
+                    string color = Regex.Replace(whatcolor.Value, "[a-zA-Z :.]", "");
+                    double colorvalue;
+                    Double.TryParse(color, out colorvalue);
+                    CreateFile("Bilateral" + distnumValue.ToString() + " Color" + colorvalue.ToString());
+                    for (int i = 1; i <= 5; i = i + 4)
+                    {
+                        for (int j = 2; j <= 62; j = j + 10)
+                        {
+                            msetofile = 0;
+                            msdtofile = 0;
+                            medtofile = 0;
+                            martofile = 0;
+                            timetofile = 0;
+                            linesdetected = 0;
+
+                            foreach (var line in lines)
+                            {
+                                if (Regex.IsMatch(line, patternDataSigmaSpace + j.ToString()) && Regex.IsMatch(line, "_" + i.ToString()))
+                                {
+                                    Increment(line);
+                                }
+                            }
+                            msetofile = msetofile / linesdetected;
+                            msdtofile = msdtofile / linesdetected;
+                            medtofile = medtofile / linesdetected;
+                            martofile = martofile / linesdetected;
+                            timetofile = timetofile / linesdetected;
+
+                            string newmsetofile = msetofile.ToString().Replace(',', '.');
+                            string newmsdtofile = msdtofile.ToString().Replace(',', '.');
+                            string newmedtofile = medtofile.ToString().Replace(',', '.');
+                            string newmartofile = martofile.ToString().Replace(',', '.');
+                            string newtimetofile = timetofile.ToString().Replace(',', '.');
+                            AddToFile("Bilateral" + distnumValue.ToString() + " Color" + colorvalue.ToString(), j, newmsetofile, newmsdtofile, newmedtofile, newmartofile, newtimetofile);
                         }
                     }
                 }
