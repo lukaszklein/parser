@@ -40,9 +40,12 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Load = new System.Windows.Forms.Button();
             this.createSubset = new System.Windows.Forms.Button();
             this.gnucompile = new System.Windows.Forms.Button();
+            this.prepareref = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,16 +112,6 @@
             title1.Name = "Title1";
             this.chart1.Titles.Add(title1);
             // 
-            // Load
-            // 
-            this.Load.Location = new System.Drawing.Point(1016, 12);
-            this.Load.Name = "Load";
-            this.Load.Size = new System.Drawing.Size(134, 23);
-            this.Load.TabIndex = 1;
-            this.Load.Text = "Wskaż plik z danymi";
-            this.Load.UseVisualStyleBackColor = true;
-            this.Load.Click += new System.EventHandler(this.load_Click);
-            // 
             // createSubset
             // 
             this.createSubset.Location = new System.Drawing.Point(1017, 62);
@@ -133,20 +126,63 @@
             // 
             this.gnucompile.Location = new System.Drawing.Point(1017, 116);
             this.gnucompile.Name = "gnucompile";
-            this.gnucompile.Size = new System.Drawing.Size(75, 23);
+            this.gnucompile.Size = new System.Drawing.Size(107, 23);
             this.gnucompile.TabIndex = 3;
-            this.gnucompile.Text = "do gnu";
+            this.gnucompile.Text = "do gnu średnie";
             this.gnucompile.UseVisualStyleBackColor = true;
             this.gnucompile.Click += new System.EventHandler(this.gnucompile_Click);
+            // 
+            // prepareref
+            // 
+            this.prepareref.Location = new System.Drawing.Point(1017, 157);
+            this.prepareref.Name = "prepareref";
+            this.prepareref.Size = new System.Drawing.Size(75, 23);
+            this.prepareref.TabIndex = 4;
+            this.prepareref.Text = "ref";
+            this.prepareref.UseVisualStyleBackColor = true;
+            this.prepareref.Click += new System.EventHandler(this.prepareref_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1016, 186);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "generate ref code";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(1016, 226);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(108, 23);
+            this.delete.TabIndex = 6;
+            this.delete.Text = "delete files bilateral";
+            this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1017, 283);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "do gnu osobne";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 653);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.prepareref);
             this.Controls.Add(this.gnucompile);
             this.Controls.Add(this.createSubset);
-            this.Controls.Add(this.Load);
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -158,9 +194,12 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button Load;
         private System.Windows.Forms.Button createSubset;
         private System.Windows.Forms.Button gnucompile;
+        private System.Windows.Forms.Button prepareref;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button button2;
     }
 }
 
